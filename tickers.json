@@ -1,0 +1,10 @@
+{
+  "tickers": [
+    {"code": "BBCA", "sector": "Perbankan"},
+    {"code": "BMRI", "sector": "Perbankan"},
+    {"code": "BBRI", "sector": "Perbankan"},
+    {"code": "BBNI", "sector": "Perbankan"},
+    {"code": "ANTM", "sector": "Pertambangan & energi"},
+    {"code": "CUAN", "sector": "Pertambangan & energi"}
+  ]
+}

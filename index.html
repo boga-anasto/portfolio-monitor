@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Portofolio saham</title>
+<style>
+:root{--bg:#f3f5f4;--card:#fff;--ink:#17211f;--mute:#5b6865;--line:#dce2df;--accent:#0f5c5c;--neg:#b3261e;--pos:#1b7a43;--warn-bg:#fff2cc;--warn:#6b4e00;--bar:#c9d6d2}
+@media (prefers-color-scheme:dark){:root{--bg:#0f1514;--card:#172120;--ink:#e6ecea;--mute:#98a8a3;--line:#2a3633;--accent:#6cc8c0;--neg:#ff8f85;--pos:#74d79d;--warn-bg:#3a2f10;--warn:#f1cf73;--bar:#2c3b38}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-variant-numeric:tabular-nums}
+main{max-width:720px;margin:0 auto;padding:16px 14px 48px}
+h1{font-size:1.25rem;margin:4px 0 2px}
+h2{font-size:1rem;margin:0 0 10px}
+.meta{color:var(--mute);font-size:.82rem;margin:0 0 14px}
+.chip{display:inline-block;border:1px solid var(--line);border-radius:6px;padding:0 6px;margin-right:4px;font-size:.78rem;color:var(--ink)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px;margin-bottom:12px}
+.warn{background:var(--warn-bg);color:var(--warn);border-radius:10px;padding:10px 12px;margin-bottom:12px;font-size:.88rem}
+.sum{display:grid;grid-template-columns:1fr 1fr;gap:14px 12px}
+.sum .big{grid-column:1/-1}
+.lbl{color:var(--mute);font-size:.8rem}
+.val{font-size:1.15rem;font-weight:600}
+.big .val{font-size:1.7rem}
+.neg{color:var(--neg)}.pos{color:var(--pos)}
+.row{padding:12px 0;border-top:1px solid var(--line)}
+.row:first-of-type{border-top:0;padding-top:0}
+.l1,.l2{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+.l1 b{font-size:1.05rem}
+.l2{font-size:.86rem;color:var(--mute);margin-top:2px}
+.bar{height:6px;background:var(--bar);border-radius:3px;margin-top:8px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--accent)}
+.bw{font-size:.78rem;color:var(--mute);margin-top:3px}
+form.tx{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+label{font-size:.8rem;color:var(--mute);display:block}
+input,select,textarea,button{font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:8px 10px;width:100%}
+textarea{min-height:160px;font:.8rem/1.4 ui-monospace,monospace}
+button{background:var(--accent);color:var(--bg);border:0;font-weight:600;cursor:pointer}
+button.sec{background:transparent;color:var(--ink);border:1px solid var(--line);font-weight:500}
+.full{grid-column:1/-1}
+.msg{font-size:.85rem;margin-top:8px}
+.tl{font-size:.85rem;color:var(--mute);margin:10px 0 0;padding:0;list-style:none}
+details{margin-top:6px}summary{cursor:pointer;color:var(--mute);font-size:.85rem}
+footer{color:var(--mute);font-size:.78rem;margin-top:18px}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+</style>
+</head>
+<body>
+<main>
+  <h1>Portofolio saham</h1>
+  <p class="meta" id="status">Memuat harga…</p>
+  <div id="alerts"></div>
+  <div id="setup" class="card" hidden>
+    <h2>Masukkan posisi awal</h2>
+    <p class="lbl">Posisi disimpan hanya di browser perangkat ini, tidak dikirim ke mana pun dan tidak ada di repositori. Tempel isi <code>positions_PRIVAT.json</code>.</p>
+    <textarea id="setupText" aria-label="Isi positions_PRIVAT.json" spellcheck="false"></textarea>
+    <div class="msg" id="setupMsg"></div>
+    <button id="setupBtn" style="margin-top:8px">Simpan di perangkat ini</button>
+  </div>
+  <div id="app" hidden>
+    <section class="card sum" id="summary"></section>
+    <section class="card"><h2>Posisi</h2><div id="rows"></div></section>
+    <section class="card"><h2>Konsentrasi sektor</h2><div id="sectors"></div></section>
+    <section class="card">
+      <h2>Catat transaksi</h2>
+      <form class="tx" id="txForm">
+        <div><label for="txCode">Kode</label><input id="txCode" list="codes" autocapitalize="characters" required><datalist id="codes"></datalist></div>
+        <div><label for="txSide">Jenis</label><select id="txSide"><option value="buy">Beli</option><option value="sell">Jual</option></select></div>
+        <div><label for="txLot">Lot</label><input id="txLot" type="number" min="1" step="1" inputmode="numeric" required></div>
+        <div><label for="txPrice">Harga per saham (Rp)</label><input id="txPrice" type="number" min="1" step="any" inputmode="decimal" required></div>
+        <button class="full" type="submit">Catat transaksi</button>
+      </form>
+      <div class="msg" id="txMsg"></div>
+      <ul class="tl" id="txList"></ul>
+      <button class="sec" id="undoBtn" style="margin-top:8px" hidden>Batalkan transaksi terakhir</button>
+    </section>
+    <details><summary>Ganti posisi awal</summary>
+      <p class="lbl">Ini menghapus posisi dan semua transaksi yang tersimpan di perangkat ini.</p>
+      <button class="sec" id="resetBtn">Hapus data di perangkat ini</button>
+    </details>
+  </div>
+  <footer>Bukan pengganti konfirmasi saldo dan order resmi di BCA Sekuritas. Transaksi yang dicatat di sini tidak memperhitungkan fee dan pajak. Kas RDN adalah angka snapshot, tidak diperbarui otomatis.</footer>
+</main>
+<script>
+const LS_BASE='psm.base.v1', LS_TX='psm.tx.v1';
+const $=id=>document.getElementById(id);
+const nf0=new Intl.NumberFormat('id-ID',{maximumFractionDigits:0});
+const nf2=new Intl.NumberFormat('id-ID',{minimumFractionDigits:2,maximumFractionDigits:2});
+const rp=n=>(n<0?'\u2212':'')+'Rp'+nf0.format(Math.abs(Math.round(n)));
+const pct=n=>(n>0?'+':n<0?'\u2212':'')+nf2.format(Math.abs(n))+'%';
+const cls=n=>n<0?'neg':n>0?'pos':'';
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function lsGet(k){try{return JSON.parse(localStorage.getItem(k))}catch(e){return null}}
+function lsSet(k,v){try{localStorage.setItem(k,JSON.stringify(v));return true}catch(e){return false}}
+function lsDel(k){try{localStorage.removeItem(k)}catch(e){}}
+function fmtTime(iso){
+  if(!iso) return '-';
+  return new Date(iso).toLocaleString('id-ID',{timeZone:'Asia/Jakarta',day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'})+' WIB';
+}
+function ago(iso){
+  const m=Math.round((Date.now()-new Date(iso).getTime())/60000);
+  if(m<1) return 'baru saja'; if(m<60) return m+' mnt lalu';
+  const h=Math.round(m/60); if(h<48) return h+' jam lalu';
+  return Math.round(h/24)+' hari lalu';
+}
+
+let prices=null, base=null, txs=[];
+
+function currentPositions(){
+  const m=new Map(base.positions.map(p=>[p.ticker,{ticker:p.ticker,lot:p.lot,avg:p.avg}]));
+  for(const t of txs){
+    const p=m.get(t.ticker)||{ticker:t.ticker,lot:0,avg:0};
+    if(t.side==='buy'){ const s0=p.lot*100,s1=t.lot*100; p.avg=(s0*p.avg+s1*t.price)/(s0+s1); p.lot+=t.lot; }
+    else { p.lot-=t.lot; }
+    m.set(t.ticker,p);
+  }
+  return [...m.values()].filter(p=>p.lot>0);
+}
+
+function render(){
+  const q=(prices&&prices.quotes)||{};
+  const pos=currentPositions();
+  const rows=pos.map(p=>{
+    const k=q[p.ticker], has=k&&typeof k.price==='number', sh=p.lot*100, cost=sh*p.avg;
+    const value=has?sh*k.price:null, pl=has?value-cost:null;
+    const day=(has&&typeof k.prev_close==='number')?sh*(k.price-k.prev_close):null;
+    return {p,k,has,sh,cost,value,pl,plp:has?pl/cost*100:null,day,
+      dayp:day!==null?(k.price/k.prev_close-1)*100:null,
+      sector:(k&&k.sector)||'Tidak diketahui'};
+  });
+  const ok=rows.filter(r=>r.has);
+  const totV=ok.reduce((a,r)=>a+r.value,0), totC=ok.reduce((a,r)=>a+r.cost,0);
+  const totPL=totV-totC;
+  const dayRows=ok.filter(r=>r.day!==null);
+  const totDay=dayRows.reduce((a,r)=>a+r.day,0);
+  const prevV=dayRows.reduce((a,r)=>a+r.sh*r.k.prev_close,0);
+
+  $('summary').innerHTML=
+    `<div class="big"><div class="lbl">Nilai pasar saham</div><div class="val">${rp(totV)}</div></div>`+
+    `<div><div class="lbl">Unrealized P/L</div><div class="val ${cls(totPL)}">${rp(totPL)}</div><div class="${cls(totPL)}">${totC?pct(totPL/totC*100):'-'}</div></div>`+
+    `<div><div class="lbl">Perubahan hari ini</div><div class="val ${cls(totDay)}">${dayRows.length?rp(totDay):'-'}</div><div class="${cls(totDay)}">${dayRows.length&&prevV?pct(totDay/prevV*100):''}</div></div>`+
+    `<div><div class="lbl">Kas RDN (snapshot)</div><div class="val">${base.cash_rdn!=null?rp(base.cash_rdn):'-'}</div></div>`+
+    `<div><div class="lbl">Total modal saham</div><div class="val">${rp(totC)}</div></div>`;
+
+  $('rows').innerHTML=rows.map(r=>{
+    const w=r.has&&totV?r.value/totV*100:0;
+    if(!r.has) return `<div class="row"><div class="l1"><b>${esc(r.p.ticker)}</b><span class="neg">Belum ada data harga</span></div><div class="l2"><span>${r.p.lot} lot \u00b7 avg ${nf2.format(r.p.avg)}</span><span>Tambahkan kode ke tickers.json</span></div></div>`;
+    return `<div class="row">`+
+      `<div class="l1"><b>${esc(r.p.ticker)} <span class="lbl" style="white-space:nowrap">${r.p.lot} lot \u00b7 avg ${nf2.format(r.p.avg)}</span></b><span>${rp(r.value)}</span></div>`+
+      `<div class="l2"><span>Harga ${nf0.format(r.k.price)} ${r.dayp!==null?`<span class="${cls(r.dayp)}">(${pct(r.dayp)} hari ini)</span>`:''}</span><span class="${cls(r.pl)}">${rp(r.pl)} (${pct(r.plp)})</span></div>`+
+      `<div class="bar"><i style="width:${w.toFixed(1)}%"></i></div><div class="bw">Bobot ${nf2.format(w)}%${r.k.ok===false?' \u00b7 harga lama, gagal diperbarui':''}</div>`+
+      `</div>`;
+  }).join('');
+
+  const sec={}; ok.forEach(r=>sec[r.sector]=(sec[r.sector]||0)+r.value);
+  $('sectors').innerHTML=Object.entries(sec).sort((a,b)=>b[1]-a[1]).map(([s,v])=>{
+    const w=totV?v/totV*100:0;
+    return `<div class="row"><div class="l1"><span>${esc(s)}</span><span>${nf2.format(w)}%</span></div><div class="bar"><i style="width:${w.toFixed(1)}%"></i></div></div>`;
+  }).join('')||'<p class="lbl">Belum ada data.</p>';
+
+  $('codes').innerHTML=Object.keys(q).map(c=>`<option value="${esc(c)}">`).join('');
+  $('txList').innerHTML=txs.slice(-5).reverse().map(t=>`<li>${esc(t.date)} \u00b7 ${t.side==='buy'?'Beli':'Jual'} ${esc(t.ticker)} ${t.lot} lot @ ${nf0.format(t.price)}</li>`).join('');
+  $('undoBtn').hidden=!txs.length;
+}
+
+function renderStatus(){
+  const al=[];
+  if(!prices){
+    $('status').textContent='Data harga belum tersedia. Jalankan workflow "Update prices" di GitHub atau periksa koneksi.';
+    return;
+  }
+  const qs=Object.entries(prices.quotes||{});
+  const times=qs.map(([,k])=>k.market_time).filter(Boolean).sort();
+  const last=times[times.length-1];
+  $('status').innerHTML=`<span class="chip">Delayed</span><span class="chip">${esc(prices.source)}</span><br>`+
+    `Data pasar terakhir: ${fmtTime(last)}${last?' ('+ago(last)+')':''} \u00b7 Dicek: ${fmtTime(prices.fetched_at)} (${ago(prices.fetched_at)})<br>`+
+    `Status delayed dianggap tertunda sekitar 10\u201315 menit; belum terverifikasi dari sumber.`;
+  const bad=qs.filter(([,k])=>k.ok===false);
+  if(bad.length) al.push(`Gagal memperbarui: ${bad.map(([c])=>esc(c)).join(', ')}. ${bad.every(([,k])=>typeof k.price==='number')?'Yang tampil adalah harga terakhir yang berhasil diambil.':'Sebagian belum punya harga.'}`);
+  $('alerts').innerHTML=al.map(a=>`<div class="warn">${a}</div>`).join('');
+}
+
+function showApp(){
+  $('setup').hidden=!!base; $('app').hidden=!base;
+  if(base) render();
+}
+
+$('setupBtn').onclick=()=>{
+  let d; try{d=JSON.parse($('setupText').value)}catch(e){$('setupMsg').textContent='Format JSON tidak valid.';return}
+  const okp=d&&Array.isArray(d.positions)&&d.positions.length&&d.positions.every(p=>p.ticker&&p.lot>0&&p.avg>0);
+  if(!okp){$('setupMsg').textContent='Setiap posisi harus punya ticker, lot > 0, dan avg > 0.';return}
+  const clean={cash_rdn:typeof d.cash_rdn==='number'?d.cash_rdn:null,positions:d.positions.map(p=>({ticker:String(p.ticker).toUpperCase(),lot:Number(p.lot),avg:Number(p.avg)}))};
+  if(!lsSet(LS_BASE,clean)){$('setupMsg').textContent='Browser menolak penyimpanan (mode privat?).';return}
+  lsDel(LS_TX); base=clean; txs=[]; $('setupText').value=''; showApp();
+};
+$('txForm').onsubmit=e=>{
+  e.preventDefault();
+  const t={ticker:$('txCode').value.trim().toUpperCase(),side:$('txSide').value,lot:parseInt($('txLot').value,10),price:parseFloat($('txPrice').value),date:new Date().toLocaleDateString('sv-SE',{timeZone:'Asia/Jakarta'})};
+  const msg=$('txMsg');
+  if(!t.ticker||!(t.lot>0)||!(t.price>0)){msg.textContent='Lengkapi kode, lot, dan harga.';return}
+  if(t.side==='sell'){
+    const have=(currentPositions().find(p=>p.ticker===t.ticker)||{lot:0}).lot;
+    if(t.lot>have){msg.textContent=`Lot jual (${t.lot}) melebihi posisi ${t.ticker} (${have} lot).`;return}
+  }
+  txs.push(t);
+  if(!lsSet(LS_TX,txs)){txs.pop();msg.textContent='Gagal menyimpan transaksi.';return}
+  msg.textContent='Tercatat. Posisi dan avg cost sudah dihitung ulang.';
+  $('txLot').value='';$('txPrice').value='';render();
+};
+$('undoBtn').onclick=()=>{txs.pop();lsSet(LS_TX,txs);$('txMsg').textContent='Transaksi terakhir dibatalkan.';render()};
+$('resetBtn').onclick=()=>{
+  if(!confirm('Hapus posisi dan semua transaksi di perangkat ini?')) return;
+  lsDel(LS_BASE);lsDel(LS_TX);base=null;txs=[];showApp();
+};
+
+async function init(){
+  base=lsGet(LS_BASE); txs=lsGet(LS_TX)||[];
+  try{
+    const r=await fetch('data/prices.json?t='+Date.now(),{cache:'no-store'});
+    if(!r.ok) throw new Error(r.status);
+    prices=await r.json();
+  }catch(e){prices=null}
+  renderStatus(); showApp();
+}
+init();
+</script>
+</body>
+</html>
