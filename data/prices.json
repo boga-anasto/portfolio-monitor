@@ -1,39 +1,39 @@
 {
-  "fetched_at": "2026-11-04T03:46:54.791455+00:00",
+  "fetched_at": "2026-11-04T04:51:59.132187+00:00",
   "source": "Yahoo Finance (.JK)",
   "quotes": {
     "BBCA": {
       "ok": true,
-      "price": 4960.0,
+      "price": 4930.0,
       "prev_close": 4840.0,
-      "market_time": "2026-11-04T03:36:52+00:00",
+      "market_time": "2026-11-04T04:41:54+00:00",
       "delayed_by_min": null,
       "error": null,
       "sector": "Perbankan"
     },
     "BMRI": {
       "ok": true,
-      "price": 3590.0,
+      "price": 3580.0,
       "prev_close": 3590.0,
-      "market_time": "2026-11-04T03:36:49+00:00",
+      "market_time": "2026-11-04T04:41:51+00:00",
       "delayed_by_min": null,
       "error": null,
       "sector": "Perbankan"
     },
     "BBRI": {
       "ok": true,
-      "price": 2740.0,
+      "price": 2710.0,
       "prev_close": 2660.0,
-      "market_time": "2026-11-04T03:36:52+00:00",
+      "market_time": "2026-11-04T04:41:55+00:00",
       "delayed_by_min": null,
       "error": null,
       "sector": "Perbankan"
     },
     "BBNI": {
       "ok": true,
-      "price": 3250.0,
+      "price": 3210.0,
       "prev_close": 3200.0,
-      "market_time": "2026-11-04T03:36:29+00:00",
+      "market_time": "2026-11-04T04:41:56+00:00",
       "delayed_by_min": null,
       "error": null,
       "sector": "Perbankan"
@@ -42,7 +42,7 @@
       "ok": true,
       "price": 2450.0,
       "prev_close": 2400.0,
-      "market_time": "2026-11-04T03:36:51+00:00",
+      "market_time": "2026-11-04T04:41:53+00:00",
       "delayed_by_min": null,
       "error": null,
       "sector": "Pertambangan & energi"
@@ -51,7 +51,7 @@
       "ok": true,
       "price": 354.0,
       "prev_close": 380.0,
-      "market_time": "2026-11-04T03:36:49+00:00",
+      "market_time": "2026-11-04T04:41:46+00:00",
       "delayed_by_min": null,
       "error": null,
       "sector": "Pertambangan & energi"
