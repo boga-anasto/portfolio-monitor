@@ -1,21 +1,21 @@
 {
-  "fetched_at": "2026-11-11T04:53:59.621799+00:00",
+  "fetched_at": "2026-11-11T05:54:01.559256+00:00",
   "source": "Yahoo Finance (.JK)",
   "quotes": {
     "BBCA": {
       "ok": true,
       "price": 5275.0,
       "prev_close": 5300.0,
-      "market_time": "2026-11-11T04:43:57+00:00",
+      "market_time": "2026-11-11T04:59:56+00:00",
       "delayed_by_min": null,
       "error": null,
       "sector": "Perbankan"
     },
     "BMRI": {
       "ok": true,
-      "price": 3740.0,
+      "price": 3750.0,
       "prev_close": 3750.0,
-      "market_time": "2026-11-11T04:43:46+00:00",
+      "market_time": "2026-11-11T04:59:58+00:00",
       "delayed_by_min": null,
       "error": null,
       "sector": "Perbankan"
@@ -24,7 +24,7 @@
       "ok": true,
       "price": 2830.0,
       "prev_close": 2820.0,
-      "market_time": "2026-11-11T04:43:56+00:00",
+      "market_time": "2026-11-11T04:59:58+00:00",
       "delayed_by_min": null,
       "error": null,
       "sector": "Perbankan"
@@ -33,7 +33,7 @@
       "ok": true,
       "price": 3390.0,
       "prev_close": 3400.0,
-      "market_time": "2026-11-11T04:43:57+00:00",
+      "market_time": "2026-11-11T04:59:53+00:00",
       "delayed_by_min": null,
       "error": null,
       "sector": "Perbankan"
@@ -42,16 +42,16 @@
       "ok": true,
       "price": 2760.0,
       "prev_close": 2760.0,
-      "market_time": "2026-11-11T04:43:53+00:00",
+      "market_time": "2026-11-11T04:59:48+00:00",
       "delayed_by_min": null,
       "error": null,
       "sector": "Pertambangan & energi"
     },
     "CUAN": {
       "ok": true,
-      "price": 388.0,
+      "price": 382.0,
       "prev_close": 380.0,
-      "market_time": "2026-11-11T04:42:58+00:00",
+      "market_time": "2026-11-11T04:59:56+00:00",
       "delayed_by_min": null,
       "error": null,
       "sector": "Pertambangan & energi"
