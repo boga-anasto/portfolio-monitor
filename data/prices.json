@@ -1,57 +1,57 @@
 {
-  "fetched_at": "2026-11-20T09:56:25.133372+00:00",
+  "fetched_at": "2026-11-23T02:53:36.534595+00:00",
   "source": "Yahoo Finance (.JK)",
   "quotes": {
     "BBCA": {
       "ok": true,
-      "price": 5550.0,
-      "prev_close": 5650.0,
-      "market_time": "2026-11-20T09:14:35+00:00",
+      "price": 5650.0,
+      "prev_close": 5550.0,
+      "market_time": "2026-11-23T02:43:35+00:00",
       "delayed_by_min": null,
       "error": null,
       "sector": "Perbankan"
     },
     "BMRI": {
       "ok": true,
-      "price": 3890.0,
-      "prev_close": 3910.0,
-      "market_time": "2026-11-20T09:14:39+00:00",
+      "price": 3850.0,
+      "prev_close": 3890.0,
+      "market_time": "2026-11-23T02:43:28+00:00",
       "delayed_by_min": null,
       "error": null,
       "sector": "Perbankan"
     },
     "BBRI": {
       "ok": true,
-      "price": 3080.0,
-      "prev_close": 3090.0,
-      "market_time": "2026-11-20T09:14:49+00:00",
+      "price": 3040.0,
+      "prev_close": 3080.0,
+      "market_time": "2026-11-23T02:43:29+00:00",
       "delayed_by_min": null,
       "error": null,
       "sector": "Perbankan"
     },
     "BBNI": {
       "ok": true,
-      "price": 3560.0,
-      "prev_close": 3580.0,
-      "market_time": "2026-11-20T09:14:54+00:00",
+      "price": 3530.0,
+      "prev_close": 3560.0,
+      "market_time": "2026-11-23T02:43:30+00:00",
       "delayed_by_min": null,
       "error": null,
       "sector": "Perbankan"
     },
     "ANTM": {
       "ok": true,
-      "price": 2610.0,
+      "price": 2620.0,
       "prev_close": 2610.0,
-      "market_time": "2026-11-20T09:14:25+00:00",
+      "market_time": "2026-11-23T02:43:30+00:00",
       "delayed_by_min": null,
       "error": null,
       "sector": "Pertambangan & energi"
     },
     "CUAN": {
       "ok": true,
-      "price": 320.0,
-      "prev_close": 342.0,
-      "market_time": "2026-11-20T09:14:31+00:00",
+      "price": 334.0,
+      "prev_close": 320.0,
+      "market_time": "2026-11-23T02:43:35+00:00",
       "delayed_by_min": null,
       "error": null,
       "sector": "Pertambangan & energi"
