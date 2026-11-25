@@ -1,12 +1,12 @@
 {
-  "fetched_at": "2026-11-25T03:57:53.451402+00:00",
+  "fetched_at": "2026-11-25T05:08:51.822046+00:00",
   "source": "Yahoo Finance (.JK)",
   "quotes": {
     "BBCA": {
       "ok": true,
-      "price": 5775.0,
+      "price": 5800.0,
       "prev_close": 5800.0,
-      "market_time": "2026-11-25T03:47:45+00:00",
+      "market_time": "2026-11-25T04:58:47+00:00",
       "delayed_by_min": null,
       "error": null,
       "sector": "Perbankan"
@@ -15,7 +15,7 @@
       "ok": true,
       "price": 3980.0,
       "prev_close": 3990.0,
-      "market_time": "2026-11-25T03:47:48+00:00",
+      "market_time": "2026-11-25T04:58:48+00:00",
       "delayed_by_min": null,
       "error": null,
       "sector": "Perbankan"
@@ -24,34 +24,34 @@
       "ok": true,
       "price": 3060.0,
       "prev_close": 3100.0,
-      "market_time": "2026-11-25T03:47:51+00:00",
+      "market_time": "2026-11-25T04:58:48+00:00",
       "delayed_by_min": null,
       "error": null,
       "sector": "Perbankan"
     },
     "BBNI": {
       "ok": true,
-      "price": 3590.0,
+      "price": 3580.0,
       "prev_close": 3570.0,
-      "market_time": "2026-11-25T03:47:23+00:00",
+      "market_time": "2026-11-25T04:58:49+00:00",
       "delayed_by_min": null,
       "error": null,
       "sector": "Perbankan"
     },
     "ANTM": {
       "ok": true,
-      "price": 2660.0,
+      "price": 2640.0,
       "prev_close": 2670.0,
-      "market_time": "2026-11-25T03:47:43+00:00",
+      "market_time": "2026-11-25T04:58:44+00:00",
       "delayed_by_min": null,
       "error": null,
       "sector": "Pertambangan & energi"
     },
     "CUAN": {
       "ok": true,
-      "price": 358.0,
+      "price": 356.0,
       "prev_close": 372.0,
-      "market_time": "2026-11-25T03:47:39+00:00",
+      "market_time": "2026-11-25T04:58:40+00:00",
       "delayed_by_min": null,
       "error": null,
       "sector": "Pertambangan & energi"
