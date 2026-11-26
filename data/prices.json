@@ -1,59 +1,59 @@
 {
-  "fetched_at": "2026-11-26T05:02:15.509165+00:00",
+  "fetched_at": "2026-11-26T06:25:13.244982+00:00",
   "source": "Yahoo Finance (.JK)",
   "quotes": {
     "BBCA": {
-      "ok": false,
+      "ok": true,
       "price": 5925.0,
       "prev_close": 5825.0,
-      "market_time": "2026-11-26T03:45:10+00:00",
+      "market_time": "2026-11-26T04:59:58+00:00",
       "delayed_by_min": null,
-      "error": "HTTPError: HTTP Error 429: Too Many Requests",
+      "error": null,
       "sector": "Perbankan"
     },
     "BMRI": {
-      "ok": false,
-      "price": 4000.0,
+      "ok": true,
+      "price": 3990.0,
       "prev_close": 4000.0,
-      "market_time": "2026-11-26T03:45:04+00:00",
+      "market_time": "2026-11-26T04:59:56+00:00",
       "delayed_by_min": null,
-      "error": "HTTPError: HTTP Error 429: Too Many Requests",
+      "error": null,
       "sector": "Perbankan"
     },
     "BBRI": {
-      "ok": false,
+      "ok": true,
       "price": 3060.0,
       "prev_close": 3070.0,
-      "market_time": "2026-11-26T03:45:10+00:00",
+      "market_time": "2026-11-26T04:59:59+00:00",
       "delayed_by_min": null,
-      "error": "HTTPError: HTTP Error 429: Too Many Requests",
+      "error": null,
       "sector": "Perbankan"
     },
     "BBNI": {
-      "ok": false,
-      "price": 3590.0,
+      "ok": true,
+      "price": 3570.0,
       "prev_close": 3580.0,
-      "market_time": "2026-11-26T03:44:17+00:00",
+      "market_time": "2026-11-26T04:59:56+00:00",
       "delayed_by_min": null,
-      "error": "HTTPError: HTTP Error 429: Too Many Requests",
+      "error": null,
       "sector": "Perbankan"
     },
     "ANTM": {
-      "ok": false,
-      "price": 2640.0,
+      "ok": true,
+      "price": 2650.0,
       "prev_close": 2620.0,
-      "market_time": "2026-11-26T03:45:10+00:00",
+      "market_time": "2026-11-26T04:59:59+00:00",
       "delayed_by_min": null,
-      "error": "HTTPError: HTTP Error 429: Too Many Requests",
+      "error": null,
       "sector": "Pertambangan & energi"
     },
     "CUAN": {
-      "ok": false,
-      "price": 362.0,
+      "ok": true,
+      "price": 360.0,
       "prev_close": 346.0,
-      "market_time": "2026-11-26T03:45:11+00:00",
+      "market_time": "2026-11-26T04:59:49+00:00",
       "delayed_by_min": null,
-      "error": "HTTPError: HTTP Error 429: Too Many Requests",
+      "error": null,
       "sector": "Pertambangan & energi"
     }
   }
