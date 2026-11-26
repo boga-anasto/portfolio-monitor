@@ -1,59 +1,59 @@
 {
-  "fetched_at": "2026-11-26T03:55:12.291813+00:00",
+  "fetched_at": "2026-11-26T05:02:15.509165+00:00",
   "source": "Yahoo Finance (.JK)",
   "quotes": {
     "BBCA": {
-      "ok": true,
+      "ok": false,
       "price": 5925.0,
       "prev_close": 5825.0,
       "market_time": "2026-11-26T03:45:10+00:00",
       "delayed_by_min": null,
-      "error": null,
+      "error": "HTTPError: HTTP Error 429: Too Many Requests",
       "sector": "Perbankan"
     },
     "BMRI": {
-      "ok": true,
+      "ok": false,
       "price": 4000.0,
       "prev_close": 4000.0,
       "market_time": "2026-11-26T03:45:04+00:00",
       "delayed_by_min": null,
-      "error": null,
+      "error": "HTTPError: HTTP Error 429: Too Many Requests",
       "sector": "Perbankan"
     },
     "BBRI": {
-      "ok": true,
+      "ok": false,
       "price": 3060.0,
       "prev_close": 3070.0,
       "market_time": "2026-11-26T03:45:10+00:00",
       "delayed_by_min": null,
-      "error": null,
+      "error": "HTTPError: HTTP Error 429: Too Many Requests",
       "sector": "Perbankan"
     },
     "BBNI": {
-      "ok": true,
+      "ok": false,
       "price": 3590.0,
       "prev_close": 3580.0,
       "market_time": "2026-11-26T03:44:17+00:00",
       "delayed_by_min": null,
-      "error": null,
+      "error": "HTTPError: HTTP Error 429: Too Many Requests",
       "sector": "Perbankan"
     },
     "ANTM": {
-      "ok": true,
+      "ok": false,
       "price": 2640.0,
       "prev_close": 2620.0,
       "market_time": "2026-11-26T03:45:10+00:00",
       "delayed_by_min": null,
-      "error": null,
+      "error": "HTTPError: HTTP Error 429: Too Many Requests",
       "sector": "Pertambangan & energi"
     },
     "CUAN": {
-      "ok": true,
+      "ok": false,
       "price": 362.0,
       "prev_close": 346.0,
       "market_time": "2026-11-26T03:45:11+00:00",
       "delayed_by_min": null,
-      "error": null,
+      "error": "HTTPError: HTTP Error 429: Too Many Requests",
       "sector": "Pertambangan & energi"
     }
   }
